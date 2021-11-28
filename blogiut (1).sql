@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `commentaires` (
 --
 
 INSERT INTO `commentaires` (`id`, `author`, `content`, `id_article`, `date`) VALUES
-(1, 'test', 'test', '2', '2021-11-28');
+(1, 'Steve', 'test', '2', '2021-11-28');
 
 -- --------------------------------------------------------
 
