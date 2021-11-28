@@ -14,7 +14,7 @@
 
                 $articles->setDate(date('Y-m-d'));
                 $publi = $articles->getPublie() === 'on' ? 1 : 0;
-                $articles->SetPubli($publi);
+                $articles->SetPublie($publie);
 
                 $articlesManager = new articlesManager($bdd);
                 $articlesManager->add($articles);

@@ -2,15 +2,13 @@
 define('nb_articles_par_page', 2);
 $articlesManager = new articlesManager($bdd);
 
-$page = !empty($_GET['p']) ? $_GET['p'] : 1;// si $get p est différent de vide, alors la valeur sera $_GET[p], sinon $page vaut 1
+$page = !empty($_GET['p']) ? $_GET['p'] : 1;
 $indexDepart = ($page - 1) * nb_articles_par_page;
 
 $nbArticlesTotalPublie = $articlesManager->countArticlesPublie();
 $nbPages = ceil($nbArticlesTotalPublie / nb_articles_par_page);
 
 $articles = $articlesManager->getList($indexDepart, nb_articles_par_page);
-
-//print_r2($POST);
 
 ?>
 
@@ -23,12 +21,12 @@ $articles = $articlesManager->getList($indexDepart, nb_articles_par_page);
         <!-- Page Content -->
         <div class="container px-4 px-lg-5">
             <!-- Notifications -->
-           <?php 
+            <?php 
                     if (isset($_SESSION['notification'])){
             ?>
                 <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">Well done!</h4>
-                <p>you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
                 <hr>
                 <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
                 </div>
@@ -40,7 +38,7 @@ $articles = $articlesManager->getList($indexDepart, nb_articles_par_page);
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
                 <div class="col-12"></div>
                     <h1 class="font-weight-light"></h1>
-                    <p>Test</p>
+                    <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
             <!-- Content Row-->
             <div class="row gx-4 gx-lg-5">
                 <?php
@@ -51,11 +49,11 @@ $articles = $articlesManager->getList($indexDepart, nb_articles_par_page);
                     <div class="card h-100">
                     <img class="card-img-top" src="img/<?= $ListArticle->getId() ?>.jpg">
                         <div class="card-body">
-                            <h2 class="card-title"><?= $ListArticle->getTitre() ?></h2>
+                            <h2 class="card-title"><a href="view_article.php?id=<?php echo $ListArticle->getId(); ?>"><?= $ListArticle->getTitre() ?></a></h2>
                             <p class="card-text"><?= $ListArticle->getTexte() ?></p>
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!"><?= $ListArticle->getDate() ?></a></div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="formUpdateArticle.php?id=<?= $ListArticle->getId() ?>">Modifier</a></div>
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!"><?= $ListArticle->getDate() ?></a></div> 
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="formUpdateArticle.php?id=<?php echo $ListArticle->getId(); ?>">Modifier</a></div>
                     </div>
                 </div>
                 <?php 
